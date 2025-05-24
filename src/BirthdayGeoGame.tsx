@@ -65,7 +65,7 @@ const questions = [
     correctCoords: [49.150021810361274, 6.188822003278365],  
   },
       {
-    image: 'photos/16.JPG',
+    image: 'photos/16.PNG',
     correctCoords: [49.11064444096531, 6.1768104238979005],  
   },
 
@@ -235,9 +235,9 @@ export default function BirthdayGeoGame() {
                 <Popup>
                   <strong>{place.label}</strong><br />
                   {place.text}<br />
-                  {i === 7 && (
+                  {i === 6 && (
                     <img
-                      src="paris.png"
+                      src="photos/paris2.png"
                       alt="Prochain Voyage"
                       className="mt-2 rounded-md shadow w-40 h-auto"
                     />

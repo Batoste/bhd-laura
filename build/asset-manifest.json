@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/bhd-laura/static/css/main.ad50c6ae.css",
-    "main.js": "/bhd-laura/static/js/main.50f749d8.js",
+    "main.css": "/bhd-laura/static/css/main.b43852f9.css",
+    "main.js": "/bhd-laura/static/js/main.b841a60c.js",
     "index.html": "/bhd-laura/index.html",
-    "main.ad50c6ae.css.map": "/bhd-laura/static/css/main.ad50c6ae.css.map",
-    "main.50f749d8.js.map": "/bhd-laura/static/js/main.50f749d8.js.map"
+    "main.b43852f9.css.map": "/bhd-laura/static/css/main.b43852f9.css.map",
+    "main.b841a60c.js.map": "/bhd-laura/static/js/main.b841a60c.js.map"
   },
   "entrypoints": [
-    "static/css/main.ad50c6ae.css",
-    "static/js/main.50f749d8.js"
+    "static/css/main.b43852f9.css",
+    "static/js/main.b841a60c.js"
   ]
 }
