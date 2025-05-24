@@ -255,19 +255,13 @@ export default function BirthdayGeoGame() {
       <h2 className="text-2xl font-semibold text-pink-700 mb-6 text-center drop-shadow-md font-handwriting">
         Devine où cette photo a été prise ! certaines sont un peu compliqué du coup quand tu cliques tu as une petite aide il faut être bien précis !
       </h2>
-
       <img
         src={q.image}
         alt="Souvenir"
         className="max-w-2xl rounded-xl shadow-lg mb-6 object-cover h-64 sm:h-80 md:h-96"
       />
-
       <div className="w-full max-w-4xl h-[400px] relative rounded-xl overflow-hidden shadow-md">
-        <MapContainer
-          center={[20, 0]}
-          zoom={2}
-          className="w-full h-full z-0"
-        >
+        <MapContainer center={[20, 0]} zoom={2} className="w-full h-full z-0">
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <GuessMap onGuess={handleGuess} />
           {userGuess && (
@@ -278,20 +272,33 @@ export default function BirthdayGeoGame() {
                 iconSize: [25, 41],
                 iconAnchor: [12, 41],
               })}
-            />
+            >
+              {arrowAngle !== null && (
+                <Popup closeButton={false}>
+                  <div className="flex flex-col items-center">
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style={{ transform: `rotate(${arrowAngle}deg)` }}
+                    >
+                      <path d="M12 2L15 8H9L12 2Z" fill="#f43f5e" />
+                      <path d="M12 22V9" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                    <p className="mt-2 text-sm text-pink-700 font-semibold">
+                      Direction ➜ {Math.round(
+                        haversine(userGuess[0], userGuess[1], q.correctCoords[0], q.correctCoords[1])
+                      )} km
+                    </p>
+                  </div>
+                </Popup>
+              )}
+            </Marker>
           )}
         </MapContainer>
-        {arrowAngle !== null && (
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-              style={{ transform: `rotate(${arrowAngle}deg)` }}>
-              <path d="M12 2L15 8H9L12 2Z" fill="#f43f5e" />
-              <path d="M12 22V9" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </div>
-        )}
       </div>
-
       <p className="mt-6 text-lg text-center font-medium text-gray-700 bg-white px-4 py-2 rounded-lg shadow-sm">
         {message}
       </p>
