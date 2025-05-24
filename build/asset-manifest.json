@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bhd-laura/static/css/main.6ba3623c.css",
+    "main.js": "/bhd-laura/static/js/main.9d76c7d9.js",
+    "index.html": "/bhd-laura/index.html",
+    "main.6ba3623c.css.map": "/bhd-laura/static/css/main.6ba3623c.css.map",
+    "main.9d76c7d9.js.map": "/bhd-laura/static/js/main.9d76c7d9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ba3623c.css",
+    "static/js/main.9d76c7d9.js"
+  ]
+}
