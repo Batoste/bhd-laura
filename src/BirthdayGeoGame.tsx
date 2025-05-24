@@ -155,17 +155,6 @@ export default function BirthdayGeoGame() {
   const [finished, setFinished] = useState(false);
   const [arrowAngle, setArrowAngle] = useState<number | null>(null);
 
-
-  const markerRef = useRef<any>(null);
-
-   useEffect(() => {
-    if (arrowAngle !== null && markerRef.current) {
-      markerRef.current.openPopup();
-    }
-  }, [arrowAngle]);
-
-
-
   const q = questions[current];
 
   function handleGuess(coords: [number, number]) {
@@ -278,38 +267,46 @@ export default function BirthdayGeoGame() {
           <GuessMap onGuess={handleGuess} />
           {userGuess && (
             <Marker
-              ref={markerRef}
               position={userGuess as [number, number]}
               icon={L.icon({
                 iconUrl: 'pins.png',
                 iconSize: [25, 41],
                 iconAnchor: [12, 41],
               })}
-            >
-              <Popup autoPan={false}>
-                <div className="flex flex-col items-center">
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{ transform: `rotate(${arrowAngle}deg)` }}
-                  >
-                    <path d="M12 2L15 8H9L12 2Z" fill="#f43f5e" />
-                    <path d="M12 22V9" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                  <p className="mt-2 text-sm text-pink-700 font-semibold">
-                    Direction ➜ {Math.round(
-                      haversine(userGuess[0], userGuess[1], q.correctCoords[0], q.correctCoords[1])
-                    )} km
-                  </p>
-                </div>
-              </Popup>
-            </Marker>
+            />
           )}
         </MapContainer>
+
+        {arrowAngle !== null && userGuess && (
+          <div
+            className="absolute z-10 flex flex-col items-center"
+            style={{
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ transform: `rotate(${arrowAngle}deg)` }}
+            >
+              <path d="M12 2L15 8H9L12 2Z" fill="#f43f5e" />
+              <path d="M12 22V9" stroke="#f43f5e" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+            <p className="mt-1 text-sm text-pink-700 font-semibold">
+              {Math.round(
+                haversine(userGuess[0], userGuess[1], q.correctCoords[0], q.correctCoords[1])
+              )}{' '}
+              km
+            </p>
+          </div>
+        )}
       </div>
+
       <p className="mt-6 text-lg text-center font-medium text-gray-700 bg-white px-4 py-2 rounded-lg shadow-sm">
         {message}
       </p>
