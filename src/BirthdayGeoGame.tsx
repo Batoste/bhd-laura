@@ -32,7 +32,7 @@ const questions = [
     correctCoords: [44.13893598196218, 15.213475139173504],  
   },
     {
-    image: 'photos/7.jpg',
+    image: 'photos/7.JPG',
     correctCoords: [49.124750893725356, 6.218749052071443],  
   },
     {
